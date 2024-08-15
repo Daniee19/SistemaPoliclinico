@@ -1,9 +1,9 @@
 package com.practicandoweb.sistemaclinica.modelo.daoclassinterface.daoimpl;
 
+import com.practicandoweb.sistemaclinica.modelo.daoclassinterface.SecretarioDao;
 import java.util.List;
-import com.practicandoweb.sistemaclinica.modelo.daoclassinterface.DoctorDao;
 
-public class DoctorDaoImpl implements DoctorDao {
+public class SecretarioDaoImpl implements SecretarioDao{
 
     @Override
     public List listarTodo() {
@@ -29,5 +29,5 @@ public class DoctorDaoImpl implements DoctorDao {
     public void eliminar(int eliminar) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
+    
 }

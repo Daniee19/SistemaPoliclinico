@@ -1,9 +1,9 @@
 package com.practicandoweb.sistemaclinica.modelo.daoclassinterface.daoimpl;
 
+import com.practicandoweb.sistemaclinica.modelo.daoclassinterface.UsuarioDao;
 import java.util.List;
-import com.practicandoweb.sistemaclinica.modelo.daoclassinterface.DoctorDao;
 
-public class DoctorDaoImpl implements DoctorDao {
+public class UsuarioDaoImpl implements UsuarioDao {
 
     @Override
     public List listarTodo() {

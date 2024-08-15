@@ -8,6 +8,6 @@ package com.practicandoweb.sistemaclinica.modelo;
  *
  * @author danie
  */
-public class Historial_clinico {
+public class HistorialClinico {
     
 }
