@@ -1,13 +1,13 @@
 package com.practicandoweb.sistemaclinica.controlador;
 
-import com.practicandoweb.sistemaclinica.vista.Jframe;
+import com.practicandoweb.sistemaclinica.vista.MainFrame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JTabbedPane;
 
 public class DoctorControlador implements ActionListener {
 
-    Jframe view;
+    MainFrame view;
 
     public DoctorControlador() {
         /**
@@ -16,6 +16,9 @@ public class DoctorControlador implements ActionListener {
          * parte del porque lo instanciamos en el constructor? Es por buena
          * practica? Ya que si fuese atributo igual lo ejecutaría.
          */
+        
+        
+        
     }
 
     public void jpInicio() {
