@@ -1,4 +1,4 @@
--- Base de Datos
+## Base de Datos
 -- Crear base de datos
 create database sistemapoliclinico;
 
