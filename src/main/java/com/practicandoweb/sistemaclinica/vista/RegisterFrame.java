@@ -1,6 +1,7 @@
 package com.practicandoweb.sistemaclinica.vista;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -14,7 +15,7 @@ public class RegisterFrame extends javax.swing.JFrame {
     public RegisterFrame() {
         initComponents();
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -31,7 +32,7 @@ public class RegisterFrame extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         txtContrasenia = new javax.swing.JPasswordField();
         jLabel8 = new javax.swing.JLabel();
-        txtRol = new javax.swing.JTextField();
+        cbRol = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -69,7 +70,8 @@ public class RegisterFrame extends javax.swing.JFrame {
 
         jLabel8.setText("Rol");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, -1, -1));
-        getContentPane().add(txtRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 290, 30));
+
+        getContentPane().add(cbRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 290, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -162,12 +164,12 @@ public class RegisterFrame extends javax.swing.JFrame {
         this.txtContrasenia = txtContrasenia;
     }
 
-    public JTextField getTxtRol() {
-        return txtRol;
+    public JComboBox<String> getCbRol() {
+        return cbRol;
     }
 
-    public void setTxtRol(JTextField txtRol) {
-        this.txtRol = txtRol;
+    public void setCbRol(JComboBox<String> cbRol) {
+        this.cbRol = cbRol;
     }
 
     public JTextField getTxtUsuario() {
@@ -177,11 +179,11 @@ public class RegisterFrame extends javax.swing.JFrame {
     public void setTxtUsuario(JTextField txtUsuario) {
         this.txtUsuario = txtUsuario;
     }
-    
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegister;
+    private javax.swing.JComboBox<String> cbRol;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -192,7 +194,6 @@ public class RegisterFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblTieneCuenta;
     private javax.swing.JPasswordField txtContrasenia;
-    private javax.swing.JTextField txtRol;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

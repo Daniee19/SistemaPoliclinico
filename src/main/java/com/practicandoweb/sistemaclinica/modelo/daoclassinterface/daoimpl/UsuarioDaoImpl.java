@@ -2,16 +2,27 @@ package com.practicandoweb.sistemaclinica.modelo.daoclassinterface.daoimpl;
 
 import com.practicandoweb.sistemaclinica.controlador.Conexion;
 import com.practicandoweb.sistemaclinica.modelo.Usuario;
+import com.practicandoweb.sistemaclinica.modelo.clasesMetodos.Aes;
 import com.practicandoweb.sistemaclinica.modelo.daoclassinterface.UsuarioDao;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import javax.swing.JOptionPane;
 
 public class UsuarioDaoImpl implements UsuarioDao {
@@ -75,12 +86,10 @@ public class UsuarioDaoImpl implements UsuarioDao {
         return null;
     }
 
-    //Buscar la manera de hacer un registrar con AES_CRIPT
     @Override
     public void registrar(Object registrar) {
         usuario = (Usuario) registrar;
 
-        //Necesito una manera de poder traer los textos de los inputs
         String sql = "INSERT INTO usuario(nombreUsuario, contrasenia, rol) values (?,?,?)";
         /**
          * Dentro del parámetro del try resources, se debe de mencionar y
@@ -125,14 +134,31 @@ public class UsuarioDaoImpl implements UsuarioDao {
 
         try (Connection con = Conexion.getConnection(); PreparedStatement ps = con.prepareStatement(sql);) {
             ps.setString(1, usuario.getNombreUsuario());
-//            ps.setString(3, usuario.getContrasenia());
 
             /**
-             * Traer la contraseña convertirla a String y luego convertirla en
-             * byte
+             * <<Obtienes la contraseña del JPassword.>> la cual se obtiene a
+             * traves del parametro pasra establecer una relacion
              */
-            byte[] contraseniaBytes = contrasenia.getBytes("UTF-8");
-            ps.setBytes(2, contraseniaBytes);
+            byte[] contra = contrasenia.getBytes();
+            String scontra = new String(contra);
+            /**
+             * Voy a encriptarlo.
+             */
+            String contraseniaEncriptada = Aes.encriptar(scontra);
+            //Me retorna un codigo hexadecimal eso quiere decir que funciona bien
+//            String base64Salt = Base64.getEncoder().encodeToString(valor);contraseniaEncriptada
+//            ps.setBytes(2, contra);
+            /**
+             * Convertimos la contrasena de String a byte[] para poder
+             * convertirla posteriormente a tipo Blob
+             */
+            byte[] contraseniaByte = contraseniaEncriptada.getBytes("UTF-8");
+            /**
+             * Por medio del InputStream pasamos la contraseña de tipo byte[] a
+             * tipo Blob
+             */
+            InputStream contraseniaBlob = new ByteArrayInputStream(contraseniaByte);
+            ps.setBlob(2, contraseniaBlob);
             ps.setString(3, usuario.getRol());
             int rs = ps.executeUpdate();
 
@@ -143,10 +169,21 @@ public class UsuarioDaoImpl implements UsuarioDao {
             }
 
         } catch (SQLException e) {
+            System.out.println("Error al agregar usuario");
             System.out.println(e.getMessage());
+
+        } catch (InvalidKeyException ex) {
+            Logger.getLogger(UsuarioDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(UsuarioDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(UsuarioDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchPaddingException ex) {
+            Logger.getLogger(UsuarioDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalBlockSizeException ex) {
+            Logger.getLogger(UsuarioDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (BadPaddingException ex) {
             Logger.getLogger(UsuarioDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
 }
