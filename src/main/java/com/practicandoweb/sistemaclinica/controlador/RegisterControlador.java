@@ -68,7 +68,7 @@ public class RegisterControlador implements ActionListener {
             char[] contraseniaChar = rf.getTxtContrasenia().getPassword();
             String contrasenia = new String(contraseniaChar);
 
-            daoUsuario.register(usuario, contrasenia);
+            daoUsuario.register(usuario.getNombreUsuario(), contrasenia, rolSeleccionado);
         } else {
             JOptionPane.showMessageDialog(null, "Seleccione un rol");
         }

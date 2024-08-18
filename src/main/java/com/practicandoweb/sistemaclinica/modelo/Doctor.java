@@ -1,6 +1,13 @@
 
 package com.practicandoweb.sistemaclinica.modelo;
 
-public class Doctor {
+import javax.swing.JOptionPane;
+
+public class Doctor extends Persona{
+
+    public Doctor() {
+        JOptionPane.showMessageDialog(null, "Se creo un doctor");
+    }
+    
     
 }

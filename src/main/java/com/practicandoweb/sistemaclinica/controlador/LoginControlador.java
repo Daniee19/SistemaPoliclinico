@@ -2,6 +2,7 @@ package com.practicandoweb.sistemaclinica.controlador;
 
 import com.practicandoweb.sistemaclinica.modelo.Dao;
 import com.practicandoweb.sistemaclinica.modelo.Usuario;
+import com.practicandoweb.sistemaclinica.modelo.daoclassinterface.UsuarioDao;
 import com.practicandoweb.sistemaclinica.modelo.daoclassinterface.daoimpl.UsuarioDaoImpl;
 import com.practicandoweb.sistemaclinica.vista.AspectoWindows;
 import com.practicandoweb.sistemaclinica.vista.LoginFrame;
@@ -22,7 +23,7 @@ public class LoginControlador implements ActionListener {
     Usuario usuario = new Usuario();
 
     //No se llama en la instancia al Dao<Usuario> porque lo que queremos evitar definir los metodos del CRUD en esta clase Controlador
-    Dao<Usuario> usuDao = new UsuarioDaoImpl();
+    UsuarioDao usuDao = new UsuarioDaoImpl();
     DefaultTableModel modeloTabla = new DefaultTableModel();
 
     public LoginControlador(LoginFrame view) {
@@ -58,6 +59,16 @@ public class LoginControlador implements ActionListener {
 
     public void verificarUsuario() {
 
+        char[] pass = view.getTxtContrasenia().getPassword();
+        String contrasenia = new String(pass);
+
+        boolean existeUsuario = usuDao.login(view.getTxtUsuario().getText(), contrasenia);
+        
+        if(existeUsuario){
+            JOptionPane.showMessageDialog(null, "Bienvenido");
+        }else{
+            JOptionPane.showMessageDialog(null, "Error: No existe el usuario");
+        }
     }
 
     public void goRegistrarse() {
@@ -70,7 +81,7 @@ public class LoginControlador implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == view.getBtnLogin()) {
-            btn();
+            verificarUsuario();
         }
     }
 

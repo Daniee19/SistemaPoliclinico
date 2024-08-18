@@ -2,17 +2,45 @@ package com.practicandoweb.sistemaclinica.modelo;
 
 import java.sql.Blob;
 
-public class Usuario {
+public class Usuario<T> {
 
     int id;
     String nombreUsuario;
-    Blob contrasenia;
+    String contrasenia;
     String rol;
+    Doctor doctor;
+    Administrador admin;
+    Secretario secretario;
+    Farmaceutico farmaceutico;
+    Paciente paciente;
 
     public Usuario() {
     }
 
-    public Usuario(int id, String nombreUsuario, Blob contrasenia, String rol) {
+    public Usuario(String rol) {
+
+        switch (rol) {
+            case "Administrador" -> {
+                new Administrador();
+            }
+            case "Doctor" -> {
+                new Doctor();
+            }
+            case "Secretario" -> {
+                new Secretario();
+            }
+            case "Farmaceutico" -> {
+                new Farmaceutico();
+            }
+            case "Paciente" -> {
+                new Paciente();
+            }
+            default ->
+                System.out.println("Error en escoger una clase");
+        }
+    }
+
+    public Usuario(int id, String nombreUsuario, String contrasenia, String rol) {
         this.id = id;
         this.nombreUsuario = nombreUsuario;
         this.contrasenia = contrasenia;
@@ -43,12 +71,17 @@ public class Usuario {
         this.nombreUsuario = nombreUsuario;
     }
 
-    public Blob getContrasenia() {
+    public String getContrasenia() {
         return contrasenia;
     }
 
-    public void setContrasenia(Blob contrasenia) {
+    public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "id=" + id + ", nombreUsuario=" + nombreUsuario + ", contrasenia=" + contrasenia + ", rol=" + rol + '}';
     }
 
 }
