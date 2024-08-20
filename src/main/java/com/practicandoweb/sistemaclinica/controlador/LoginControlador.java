@@ -1,6 +1,5 @@
 package com.practicandoweb.sistemaclinica.controlador;
 
-import com.practicandoweb.sistemaclinica.modelo.Dao;
 import com.practicandoweb.sistemaclinica.modelo.Usuario;
 import com.practicandoweb.sistemaclinica.modelo.daoclassinterface.UsuarioDao;
 import com.practicandoweb.sistemaclinica.modelo.daoclassinterface.daoimpl.UsuarioDaoImpl;

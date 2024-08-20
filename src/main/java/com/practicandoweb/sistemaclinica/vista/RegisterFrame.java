@@ -114,8 +114,6 @@ public class RegisterFrame extends javax.swing.JFrame {
 
         jLabel13.setText("Numero celular");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, -1, -1));
-
-        txtDoctorEspecial.setText("jTextField1");
         jPanel1.add(txtDoctorEspecial, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 490, 290, 30));
 
         jLabel14.setText("Rol");
