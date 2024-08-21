@@ -30,7 +30,6 @@ public class LoginControlador implements ActionListener {
         this.view = view;
         //Para hacer que ese componente funcione
 
-//        this.view.btn
         view.setVisible(true);
         view.setLocationRelativeTo(null);
         AspectoWindows.AspectoW();
@@ -46,7 +45,6 @@ public class LoginControlador implements ActionListener {
                 // Maneja el clic en el JLabel
                 goRegistrarse();
             }
-
         });
     }
 
