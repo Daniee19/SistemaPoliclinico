@@ -57,6 +57,7 @@ public class LoginFrame extends javax.swing.JFrame {
         jLabel5.setText("¿No tienes cuenta?");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 390, -1, -1));
 
+        lblCrearCuenta.setForeground(new java.awt.Color(0, 51, 255));
         lblCrearCuenta.setText("Crear una cuenta");
         lblCrearCuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(lblCrearCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 410, -1, -1));

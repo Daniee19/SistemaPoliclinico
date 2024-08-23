@@ -82,6 +82,7 @@ public class RegisterFrame extends javax.swing.JFrame {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconoPeqLogin.png"))); // NOI18N
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 120, 100));
 
+        lblTieneCuenta.setForeground(new java.awt.Color(0, 51, 255));
         lblTieneCuenta.setText("Ingresa tu cuenta");
         lblTieneCuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(lblTieneCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 630, -1, -1));
