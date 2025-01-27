@@ -1,5 +1,5 @@
 ## Base de Datos
-```
+```sql
 -- Crear base de datos
 --------------------------------------
 create database sistemapoliclinico;
